@@ -1,10 +1,7 @@
-function start(response)
+function start(response, postData)
 {
     console.log("Request handler 'start' was called.");
-    response.writeHead(200, {"Content-Type" : "text/html"});
-    
-    var body = '<html>'+
-    '<head>'+
+    var body = '<html>'+ '<head>'+
     '<meta http-equiv="Content-Type" content="text/html; '+
     'charset=UTF-8" />'+
     '</head>'+
@@ -15,16 +12,18 @@ function start(response)
     '</form>'+
     '</body>'+
     '</html>';
+
+    response.writeHead(200, {"Content-Type": "text/html"});
     response.write(body);
-    
     response.end();
 }
-function upload(response)
+function upload(response, postData)
 {
     console.log("Request handler 'upload' waws called.");
     response.writeHead(200,{"Content-Type" : "text/plain"});
-    response.write("do uplaod...");
+    response.write("do uplaod..." + postData);
     response.end();
+    console.log("Request chunk text = " + postData.length);
 }
 
 exports.start = start;

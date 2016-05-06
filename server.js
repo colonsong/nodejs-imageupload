@@ -13,14 +13,13 @@ function startServer(route, handle)
         var postData  = "";
         request.addListener("data", function(postDataChunk){
             postData += postDataChunk;
-            console.log("get post chunk data: " + postDataChunk );
+            console.log("get post chunk data: " + postDataChunk.length );
         });
         
         request.addListener("end", function(){
-           route(handle, pathname, response, postData); 
+           route(handle, urlPath, response, postData); 
         });
         // 接收資料END
-        route(handle, urlPath, response);
     }).listen(8888);
     console.log("Server Start");
 }

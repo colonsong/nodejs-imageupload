@@ -1,9 +1,9 @@
-function route(handle, path, response)
+function route(handle, path, response, postData)
 {
     console.log("route path" + path);
     if(typeof handle[path] === 'function')
     {
-        handle[path](response);
+        handle[path](response, postData);
     }
     else
     {
