@@ -1,3 +1,5 @@
+var querystring = require("querystring");
+
 function start(response, postData)
 {
     console.log("Request handler 'start' was called.");
@@ -21,9 +23,10 @@ function upload(response, postData)
 {
     console.log("Request handler 'upload' waws called.");
     response.writeHead(200,{"Content-Type" : "text/plain"});
-    response.write("do uplaod..." + postData);
+    
+    response.write("do uplaod..." + querystring.parse(postData).text);
     response.end();
-    console.log("Request chunk text = " + postData.length);
+    console.log("Request total chunk text = " + postData.length);
 }
 
 exports.start = start;
