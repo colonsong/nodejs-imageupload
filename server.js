@@ -8,11 +8,7 @@ function startServer(route, handle)
         console.log("DO REQUEST");
         var urlPath = url.parse(request.url).pathname;
         console.log("url path"  + urlPath);
-        route(handle, urlPath);
-    
-        response.writeHead(200, {"Content-Type" : "text/plain"});
-        response.write("Hollo World");
-        response.end(); 
+        route(handle, urlPath, response);
     }).listen(8888);
     console.log("Server Start");
 }
